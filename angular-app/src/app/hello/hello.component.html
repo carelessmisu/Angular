@@ -1,31 +1,105 @@
 <div id="body">
-    <h1>{{title}}</h1>
-    <!-- <p>{{message}}</p> -->
-    <!-- <p>Price: {{price * 1.08}} 円</p> -->
-    <!-- <p>{{today()}}</p> -->
-    <!-- <p [class]="styleClass">{{message}}</p> -->
-    <!-- <button (click)="doClick()">Click</button> -->
-    <!-- <input type="text" #flield1 -->
-        <!-- (keyup)="doType(flield1.value)" /> -->
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
 
-    <!-- ngIf-->
-    <!-- <p *ngIf="visible" (click)="doClick()" class="red">This is TRUE message.</p>
-    <p *ngIf="visible == false" (click)="doClick()">This is FALSE message</p> -->
+  <!-- FormsModule -->
+  <!-- <p>TYPE: {{text1}}</p>
+    <input type="text" [(ngModel)]="text1" /> -->
 
-    <!-- ngFor -->
-    <!-- <ul>
-        <li *ngFor="let item of data">{{item}}</li>
-    </ul> -->
+  <!-- ReactiveFormsModule -->
+  <!-- <p>TYPE: {{myControl.value}}</p>
+    <input type="text" [formControl]="myControl" /> -->
 
-    <div [ngSwitch]="switch">
-        <p *ngSwitchCase="'one'">First paragraph!</p>
-        <p *ngSwitchCase="'two'">Second paragraph!</p>
-        <p *ngSwitchCase="'three'">Third paragraph!</p>
-        <p *ngSwitchDefault>default paragraph!</p>
+  <!-- 3-8-->
+  <!-- <input type="text" [formControl]="myControl" />
+    <button (click)="doClick()">Click</button> -->
+
+  <!-- 3-10-->
+  <!-- <form [formGroup]="myControl" (ngSubmit)="onSubmit()">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>
+          <input type="text" formControlName="name" />
+        </td>
+      </tr>
+      <tr>
+        <th>Mail</th>
+        <td>
+          <input type="text" formControlName="mail" />
+        </td>
+      </tr>
+      <tr>
+        <th>age</th>
+        <td>
+          <input type="text" formControlName="age" />
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <input type="submit" formControlName="click" />
+        </td>
+      </tr>
+    </table>
+  </form> -->
+
+  <!-- 3-13 -->
+  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
+    <div>
+        <label>
+          <input type="checkbox" formControlName="control">Check Box</label> 
     </div>
-    <select #sel (change)="doSelect(sel.value)">
-        <option>one</option>
-        <option>two</option>
-        <option>three</option>
-    </select>
+    <div>
+        <input type="submit" value="click">
+    </div>
+  </form> -->
+
+  <!-- 3-14 -->
+  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
+    <div>
+      <label>
+        <input type="radio" value="male" formControlName="control" />male</label
+      >
+      <label>
+        <input
+          type="radio"
+          value="female"
+          formControlName="control"
+        />female</label
+      >
+    </div>
+    <div>
+      <input type="submit" value="click" />
+    </div>
+  </form> -->
+
+  <!-- 3-15 -->
+  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
+    <div>
+      <select formControlName="control">
+        <option>Windows</option>
+        <option>macOS</option>
+        <option>Linux</option>
+        <option>chromeOS</option>
+      </select>
+      <input type="submit" value="click" />
+    </div>
+  </form> -->
+
+  <!-- 3-16 -->
+  <form [formGroup]="myControl" (submit)="onSubmit()">
+    <div>
+      <select formControlName="control" size="5" multiple>
+        <option>android</option>
+        <option>iOS</option>
+        <option>blackberry</option>
+        <option>symbian</option>
+        <option>Fucsia</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="click" />
+    </div>
+  </form>
 </div>
