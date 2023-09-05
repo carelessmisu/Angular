@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -16,18 +16,37 @@ export class HelloComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'Hello-app';
-    this.message = 'Use FormControl';
+    this.message = 'Use FormBuilder';
     // this.text1 = '';
+    // this.myControl = new FormGroup({
+    //   control: new FormControl()
+    // });
     this.myControl = new FormGroup({
-      control: new FormControl()
+      name: new FormControl('', [Validators.required]),
+      mail: new FormControl('', [Validators.email]),
+      age: new FormControl(0, [Validators.min(1), Validators.max(150)]),
     });
+  }
+
+  get name() {
+    return this.myControl.get('name');
+  }
+  get mail() {
+    return this.myControl.get('mail');
+  }
+  get age() {
+    return this.myControl.get('age');
   }
 
   // doClick() {
   //   this.message = '「' + this.myControl.value + '」と書きましたね。';
   // }
   onSubmit() {
-    let result = this.myControl.value;
-    this.message = JSON.stringify(result);
+    if (this.myControl.invalid) {
+      this.message = 'VALIDATION ERROR';
+    } else {
+      let result = this.myControl.value;
+      this.message = JSON.stringify(result);
+    }
   }
 }
