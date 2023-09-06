@@ -1,138 +1,16 @@
 <div id="body">
   <h1>{{ title }}</h1>
-  <p>{{ message }}</p>
+  <!-- <div>add item...</div> -->
+  <!-- <div>
+    <input type="text" [(ngModel)]="input1">
+    <button (click)="push()">push</button>
+    <button (click)="pop()">pop</button>
+  </div>
+  <hr>
+  <app-message [content]="message" (action)="doClick($event)"></app-message> -->
 
-  <!-- FormsModule -->
-  <!-- <p>TYPE: {{text1}}</p>
-    <input type="text" [(ngModel)]="text1" /> -->
-
-  <!-- ReactiveFormsModule -->
-  <!-- <p>TYPE: {{myControl.value}}</p>
-    <input type="text" [formControl]="myControl" /> -->
-
-  <!-- 3-8-->
-  <!-- <input type="text" [formControl]="myControl" />
-    <button (click)="doClick()">Click</button> -->
-
-  <!-- 3-10-->
-  <!-- <form [formGroup]="myControl" (ngSubmit)="onSubmit()">
-    <table>
-      <tr>
-        <th>Name</th>
-        <td>
-          <input type="text" formControlName="name" />
-        </td>
-      </tr>
-      <tr>
-        <th>Mail</th>
-        <td>
-          <input type="text" formControlName="mail" />
-        </td>
-      </tr>
-      <tr>
-        <th>age</th>
-        <td>
-          <input type="text" formControlName="age" />
-        </td>
-      </tr>
-      <tr>
-        <th></th>
-        <td>
-          <input type="submit" formControlName="click" />
-        </td>
-      </tr>
-    </table>
-  </form> -->
-
-  <!-- 3-13 -->
-  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
-    <div>
-        <label>
-          <input type="checkbox" formControlName="control">Check Box</label> 
-    </div>
-    <div>
-        <input type="submit" value="click">
-    </div>
-  </form> -->
-
-  <!-- 3-14 -->
-  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
-    <div>
-      <label>
-        <input type="radio" value="male" formControlName="control" />male</label
-      >
-      <label>
-        <input
-          type="radio"
-          value="female"
-          formControlName="control"
-        />female</label
-      >
-    </div>
-    <div>
-      <input type="submit" value="click" />
-    </div>
-  </form> -->
-
-  <!-- 3-15 -->
-  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
-    <div>
-      <select formControlName="control">
-        <option>Windows</option>
-        <option>macOS</option>
-        <option>Linux</option>
-        <option>chromeOS</option>
-      </select>
-      <input type="submit" value="click" />
-    </div>
-  </form> -->
-
-  <!-- 3-16 -->
-  <!-- <form [formGroup]="myControl" (submit)="onSubmit()">
-    <div>
-      <select formControlName="control" size="5" multiple>
-        <option>android</option>
-        <option>iOS</option>
-        <option>blackberry</option>
-        <option>symbian</option>
-        <option>Fucsia</option>
-      </select>
-    </div>
-    <div>
-      <input type="submit" value="click" />
-    </div>
-  </form> -->
-
-  <!-- 3-19→23-->
-  <form [formGroup]="myControl" (ngSubmit)="onSubmit()">
-    <table>
-      <tr>
-        <th>Name</th>
-        <td>
-          <div *ngIf="name?.invalid">Nameは必須項目です。</div>
-          <div><input type="text" formControlName="name" /></div>
-        </td>
-      </tr>
-      <tr>
-        <th>Mail</th>
-        <td>
-          <div *ngIf="mail?.invalid">メールアドレスが必要です。</div>
-          <div><input type="text" formControlName="mail" /></div>
-        </td>
-      </tr>
-      <tr>
-        <th>age</th>
-        <td>
-          <div *ngIf="age?.invalid">1歳以上150歳未満で入力してください。</div>
-          <div><input type="text" formControlName="age" /></div>
-        </td>
-      </tr>
-      <tr>
-        <th></th>
-        <td>
-          <input [disabled]="myControl.invalid" type="submit" value="click" />
-        </td>
-      </tr>
-    </table>
-  </form>
+  <!-- directive-->
+  <p>This is No-style Directive!</p>
+  <p appMystyle>This is My-style Directive!</p>
+  <p appMystyle c="white" bg="red">This is My-style Directive!</p>
 </div>
