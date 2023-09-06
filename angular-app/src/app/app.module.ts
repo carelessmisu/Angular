@@ -6,21 +6,24 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
+import { MycheckService } from './mycheck.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     MessageComponent,
-    MystyleDirective
+    MystyleDirective,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
   // bootstrap: [AppComponent]
-  bootstrap: [HelloComponent]
+  bootstrap: [HelloComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private service: MycheckService) {
+    service.push('Taro');
+    service.push('Hanako');
+    service.push('Sachiko');
+  }
+}

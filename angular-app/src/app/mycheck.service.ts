@@ -4,9 +4,30 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MycheckService {
-  constructor() {}
+  private data!: string[];
 
-  hello(name: string) {
-    return 'Hello, ' + name + '!!';
+  constructor() {
+    this.data = [];
+  }
+
+  push(item: string) {
+    this.data.push(item);
+  }
+  pop() {
+    this.data.pop();
+  }
+  get(n: number) {
+    return this.data[n];
+  }
+
+  get size() {
+    return this.data.length;
+  }
+
+  get json() {
+    return JSON.stringify(this.data);
+  }
+  get list() {
+    return JSON.parse(JSON.stringify(this.data));
   }
 }
