@@ -12,11 +12,6 @@ export class AppComponent {
   title = 'angular-app';
   message = ''
 
-  routes: Routes = [
-    {path: 'hello', component: HelloComponent},
-    {path: 'msg/:id', component: MessageComponent}
-  ]
-
   constructor(private router: Router) {
     router.events.subscribe(event => {
       if(event instanceof NavigationStart) {
