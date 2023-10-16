@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MycheckService } from '../mycheck.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -8,19 +9,19 @@ import { MycheckService } from '../mycheck.service';
   providers: [MycheckService],
 })
 export class MessageComponent implements OnInit {
-  @Input()
   content!: string[];
-  @Output() action = new EventEmitter<MouseEvent>();
+  // @Output() action = new EventEmitter<MouseEvent>();
 
-  constructor(private service: MycheckService) {
+  constructor(private service: MycheckService, private route: ActivatedRoute) {
     service.push('message data');
   }
 
   ngOnInit() {
-    this.content = this.service.list;
+    this.service.push('params: ' + JSON.stringify(this.route.snapshot.paramMap))
+    this.content = this.service.list
   }
 
-  doAction(event: any) {
-    this.action.emit(event);
-  }
+  // doAction(event: any) {
+  //   this.action.emit(event);
+  // }
 }
