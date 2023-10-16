@@ -7,7 +7,12 @@ import { HelloComponent } from './hello/hello.component';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
 import { MycheckService } from './mycheck.service';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: 'hello', component: HelloComponent },
+  { path: 'msg', component: MessageComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,15 +20,15 @@ import { MycheckService } from './mycheck.service';
     MessageComponent,
     MystyleDirective,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  providers: [],
-  // bootstrap: [AppComponent]
-  bootstrap: [HelloComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes, { enableTracing: true }),
+  ],
+  bootstrap: [AppComponent]
+  // bootstrap: [HelloComponent],
 })
 export class AppModule {
-  constructor(private service: MycheckService) {
-    service.push('Taro');
-    service.push('Hanako');
-    service.push('Sachiko');
-  }
+  constructor() {}
 }
