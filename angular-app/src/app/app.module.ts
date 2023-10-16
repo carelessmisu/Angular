@@ -8,10 +8,11 @@ import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
 import { MycheckService } from './mycheck.service';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'hello', component: HelloComponent },
-  { path: 'msg/:id', component: MessageComponent },
+  { path: 'msg', component: MessageComponent },
 ];
 @NgModule({
   declarations: [
@@ -22,12 +23,12 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, { enableTracing: true }),
+    RouterModule.forRoot(routes),
   ],
-  bootstrap: [AppComponent]
-  // bootstrap: [HelloComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor() {}

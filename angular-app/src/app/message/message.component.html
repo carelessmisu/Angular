@@ -1,6 +1,20 @@
+<div style="margin:10px">
+    <p>{{message}}</p>
+    <input type="text" [formControl]="input">
+    <button (click)="doAction()">Click</button>
+</div>
 <div class="container">
-    <!-- <ul (click)="doAction($event)">
-        <li class="message" *ngFor="let item of content">{{item}}</li>
-    </ul> -->
-    <p class="message" *ngFor="let item of content">{{item}}</p>
+    <p class="message">{{getData()}}</p>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>mail</th>
+            <th>tel</th>
+        </tr>
+        <tr *ngFor="let item of getList()">
+            <td>{{item.name}}</td>
+            <td>{{item.mail}}</td>
+            <td>{{item.tel}}</td>
+        </tr>
+    </table>
 </div>
