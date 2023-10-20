@@ -1,7 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { MycheckService } from '../mycheck.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { fromEvent } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message',
@@ -15,12 +25,33 @@ export class MessageComponent implements OnInit {
 
   input!: FormControl;
   message!: string;
+  @ViewChild('btn')
+  btn!: ElementRef;
 
   constructor(private service: MycheckService) {}
 
   ngOnInit() {
     this.input = new FormControl('');
     this.message = 'message list';
+    const btn = this.btn.nativeElement;
+    // fromEvent(btn, 'click').subscribe((event: any) => {
+    //   this.doAction();
+    // });
+    fromEvent(btn, 'click')
+    .pipe(filter((res:MouseEvent, n:number) =>{
+      console.log(n)
+      if (res: shiftKey){
+        return false
+      }
+      return true
+    }))
+    .subscribe((evet: MouseEvent) =>{
+      this.doAction();
+    })
+  }
+
+  updateData(ck) {
+    this.service.updateData(ck)
   }
 
   getData() {
@@ -28,7 +59,10 @@ export class MessageComponent implements OnInit {
   }
 
   getList() {
-    return this.service.list;
+    return this.service.list.map((v) => {
+      v.name = '******';
+      return v;
+    });
   }
 
   doAction() {

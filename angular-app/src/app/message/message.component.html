@@ -1,7 +1,7 @@
 <div style="margin:10px">
     <p>{{message}}</p>
     <input type="text" [formControl]="input">
-    <button (click)="doAction()">Click</button>
+    <button #btn>Click</button>
 </div>
 <div class="container">
     <p class="message">{{getData()}}</p>
